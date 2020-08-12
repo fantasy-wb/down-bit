@@ -58,7 +58,8 @@ public class DownloadThread implements Callable<Boolean> {
         HttpURLConnection httpUrlConnection = HttpUtls.getHttpUrlConnection(url, startPos + localFileContentLength, endPos);
 
         // 获得输入流
-        try (InputStream input = httpUrlConnection.getInputStream(); BufferedInputStream bis = new BufferedInputStream(input);
+        try (InputStream input = httpUrlConnection.getInputStream();
+             BufferedInputStream bis = new BufferedInputStream(input);
              RandomAccessFile oSavedFile = new RandomAccessFile(httpFileName, "rw")) {
             // 文件写入开始位置 localFileContentLength
             oSavedFile.seek(localFileContentLength);

@@ -39,6 +39,16 @@ public class HttpUtls {
      * @throws IOException
      */
     public static HttpURLConnection getHttpUrlConnection(String url, long start, Long end) throws IOException {
+//        Content-Range 使用格式有下面几种。
+//
+//          Content-Range: <unit>=<range-start>-<range-end>/<size> // size 为文件总大小,如果不知道可以用 *
+//          Content-Range: <unit>=<range-start>-<range-end>/*
+//          Content-Range: <unit>=<range-start>-
+//          Content-Range: <unit>=*/<size>
+//   举例：
+//
+//        单位 bytes，从第 10 个 bytes 开始下载：Content-Range: bytes=10-
+//        单位 bytes，从第 10 个 bytes 开始下载，下载到第100个 bytes：Content-Range: bytes=10-100
         HttpURLConnection httpUrlConnection = getHttpUrlConnection(url);
         if (end != null) {
             httpUrlConnection.setRequestProperty("RANGE", "bytes=" + start + "-" + end + "/*");

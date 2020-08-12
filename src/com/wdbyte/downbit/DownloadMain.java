@@ -81,7 +81,7 @@ public class DownloadMain {
         boolean merge = merge(fileName);
         if (merge) {
             // 清理分段文件
-            clearTemp(fileName);
+            // clearTemp(fileName);
         }
         System.out.println("> 本次文件下载结束");
         System.exit(0);
